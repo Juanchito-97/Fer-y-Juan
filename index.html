@@ -4,6 +4,48 @@
 <meta charset="UTF-8">
 <title>Fer y Juan ❤️</title>
 
+  .musica{
+text-align:center;
+margin:80px auto;
+}
+
+.tarjeta-musica{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:25px;
+background:white;
+padding:20px;
+border-radius:15px;
+max-width:500px;
+margin:auto;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+transition:transform 0.3s;
+}
+
+.tarjeta-musica:hover{
+transform:scale(1.05);
+}
+
+.tarjeta-musica img{
+width:150px;
+border-radius:10px;
+}
+
+.info-musica a{
+display:inline-block;
+margin-top:10px;
+background:#1DB954;
+color:white;
+padding:10px 18px;
+border-radius:20px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.info-musica a:hover{
+background:#18a74a;
+}
 <style>
 
 body{
@@ -205,7 +247,28 @@ Eres alguien muy importante para mí y espero seguir escribiendo esta historia c
 </p>
 
 </div>
+<div class="musica">
 
+<h2>Nuestra canción 🎵</h2>
+
+<div class="tarjeta-musica">
+
+<img src="cancion.jpg">
+
+<div class="info-musica">
+
+<h3>Quien lo diría</h3>
+<p>Motherflowers</p>
+
+<a href="https://open.spotify.com/search/quien%20lo%20diria%20motherflowers" target="_blank">
+Escuchar en Spotify
+</a>
+
+</div>
+
+</div>
+
+</div>
 <footer>
 
 Hecho con amor por Juan 💙
@@ -214,26 +277,45 @@ Hecho con amor por Juan 💙
 
 <script>
 
-const inicio = new Date("2025-10-03");
+const inicio = new Date("2025-10-03T00:00:00");
 
-function actualizar(){
+function actualizarContador(){
 
 const ahora = new Date();
 
+let años = ahora.getFullYear() - inicio.getFullYear();
+let meses = ahora.getMonth() - inicio.getMonth();
+let dias = ahora.getDate() - inicio.getDate();
+
+if(dias < 0){
+meses--;
+const ultimoMes = new Date(ahora.getFullYear(), ahora.getMonth(), 0).getDate();
+dias += ultimoMes;
+}
+
+if(meses < 0){
+años--;
+meses += 12;
+}
+
 const diff = ahora - inicio;
 
-const dias = Math.floor(diff/(1000*60*60*24));
-
-const horas = Math.floor((diff/(1000*60*60))%24);
+const horas = Math.floor((diff/(1000*60*60)) % 24);
+const minutos = Math.floor((diff/(1000*60)) % 60);
+const segundos = Math.floor((diff/1000) % 60);
 
 document.getElementById("tiempo").innerHTML =
-"Llevamos juntos " + dias + " días y " + horas + " horas ❤️";
+años + " años, " +
+meses + " meses, " +
+dias + " días, " +
+horas + " horas, " +
+minutos + " minutos y " +
+segundos + " segundos ❤️";
 
 }
 
-setInterval(actualizar,1000);
+setInterval(actualizarContador,1000);
 
 </script>
-
 </body>
 </html>
