@@ -1,9 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Fer y Juan ❤️</title>
+<title>Fer y Juan ♥️</title>
 
+  <style>
+.contador{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.flip{
+background:white;
+border-radius:10px;
+padding:10px;
+text-align:center;
+width:80px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.numero{
+font-size:32px;
+font-weight:bold;
+transition:transform 0.4s;
+}
+
+.flip-anim{
+animation:flip 0.4s;
+}
+
+@keyframes flip{
+0%{transform:rotateX(0);}
+50%{transform:rotateX(90deg);}
+100%{transform:rotateX(0);}
+}
+
+.flip span{
+font-size:14px;
+color:#666;
+}
+    .seccion{
+display:flex;
+align-items:center;
+margin-bottom:70px;
+gap:40px;
+opacity:0;
+transform:translateY(40px);
+transition:all 1s ease;
+}
+
+.seccion.visible{
+opacity:1;
+transform:translateY(0);
+}
+.carta-sorpresa{
+text-align:center;
+margin:80px auto;
+}
+
+.sobre{
+width:300px;
+margin:auto;
+cursor:pointer;
+transition:transform 0.5s;
+}
+
+.sobre:hover{
+transform:scale(1.05);
+}
+
+.mensaje{
+display:none;
+background:white;
+padding:25px;
+border-radius:15px;
+margin-top:20px;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+.corazon{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:flotar 8s linear infinite;
+opacity:0.8;
+pointer-events:none;
+}
+
+@keyframes flotar{
+0%{transform:translateY(0) scale(1);}
+100%{transform:translateY(100vh) scale(1.5);}
+}
+body{
   .musica{
 text-align:center;
 margin:80px auto;
@@ -46,10 +137,8 @@ font-weight:bold;
 .info-musica a:hover{
 background:#18a74a;
 }
-<style>
 
-body{
-font-family: 'Segoe UI', sans-serif;
+font-family: 'Poppins', sans-serif;
 margin:0;
 background:#fff0f5;
 color:#333;
@@ -63,7 +152,8 @@ color:white;
 }
 
 h1{
-font-size:50px;
+font-family: 'Dancing Script', cursive;
+font-size:55px;
 margin:0;
 }
 
@@ -152,7 +242,35 @@ color:#666;
 <p class="sub">Nuestra historia</p>
 
 <div class="contador">
-<span id="tiempo"></span>
+
+<div class="flip">
+<span id="años0"></span>
+<p>Años</p>
+
+<div class="flip">
+<span id="meses">0</span>
+<p>Meses</p>
+</div>
+
+<div class="flip">
+<span id="dias">0</span>
+<p>Días</p>
+</div>
+
+<div class="flip">
+<span id="horas">0</span>
+<p>Horas</p>
+</div>
+
+<div class="flip">
+<span id="minutos">0</span>
+<p>Min</p>
+</div>
+
+<div class="flip">
+<span id="segundos">0</span>
+<p>Seg</p>
+</div>
 </div>
 
 </header>
@@ -169,7 +287,8 @@ color:#666;
 
 <p>
 El 3 de octubre de 2025 empezó nuestra historia.  
-Ese día no imaginaba que conocería a alguien tan especial.
+Ese día no imaginaba que conocería a alguien tan especial,
+que entre risas se convertiria en lo que es hoy en día.
 </p>
 
 </div>
@@ -186,8 +305,10 @@ Ese día no imaginaba que conocería a alguien tan especial.
 <h2>Nuestros primeros momentos</h2>
 
 <p>
-Cada salida contigo se volvió un recuerdo especial.
+Cada momento contigo se volvió un recuerdo especial.
 Las risas, las conversaciones y todo lo que vivimos juntos.
+Inlcuso aquellos momentos de silencio, valoro todo lo que vivimos
+estando juntos.
 </p>
 
 </div>
@@ -205,7 +326,9 @@ Las risas, las conversaciones y todo lo que vivimos juntos.
 
 <p>
 Cada foto guarda un momento que quiero recordar siempre.
-Porque contigo cada día vale la pena.
+Porque contigo cada día vale la pena, hasta los días que
+estamos lejitos.
+
 </p>
 
 </div>
@@ -223,7 +346,7 @@ Porque contigo cada día vale la pena.
 
 <p>
 Esto es solo el comienzo de todo lo que nos queda por vivir.
-Y quiero seguir creando recuerdos contigo.
+Y quiero seguir creando recuerdos contigo, te amo.
 </p>
 
 </div>
@@ -234,16 +357,16 @@ Y quiero seguir creando recuerdos contigo.
 
 <div class="carta">
 
-<h2>Para Fer 💌</h2>
+<h2>Para Fer 💌 </h2>
 
 <p>
 Quería hacer algo especial para ti.  
 Esta página es solo una pequeña forma de recordar todo lo bonito que hemos vivido desde el 3 de octubre de 2025.
 
 Gracias por cada momento, cada risa y cada recuerdo juntos.  
-Eres alguien muy importante para mí y espero seguir escribiendo esta historia contigo.
+Eres alguien muy importante para mí y espero seguir escribiendo esta historia contigo, ILY cachetes.
 
-❤️
+♥️
 </p>
 
 </div>
@@ -257,23 +380,47 @@ Eres alguien muy importante para mí y espero seguir escribiendo esta historia c
 
 <div class="info-musica">
 
-<h3>Quien lo diría</h3>
-<p>Motherflowers</p>
-
 <a href="https://open.spotify.com/search/quien%20lo%20diria%20motherflowers" target="_blank">
-Escuchar en Spotify
+
+<h3>Quien lo diría</h3>
+
 </a>
 
+<p>Motherflowers</p>
+
 </div>
+</div>
+
+</div>
+  <div class="carta-sorpresa">
+
+<h2>Una carta para ti 💌</h2>
+
+<img src="sobre.png" class="sobre" onclick="abrirCarta()">
+
+<div id="mensajeCarta" class="mensaje">
+
+<p>
+Fer, como nunca te digo. Queda tanto por demostrar y quizas
+por decir que creo que me faltaran vidas para amarte de todas las maneras posibles. 
+Solo estoy seguro de que en esta vida te amaré con intensidad cada día, sin importar
+la situación tendrás todo de mi incondicionalmente.
+
+Gracias por llegar a mi vida, besito🦦.
+</p>
 
 </div>
 
 </div>
 <footer>
 
-Hecho con amor por Juan 💙
+Hecho con amor por Juan ♥️
 
 </footer>
+
+<script>
+
+<script>
 
 <script>
 
@@ -304,18 +451,78 @@ const horas = Math.floor((diff/(1000*60*60)) % 24);
 const minutos = Math.floor((diff/(1000*60)) % 60);
 const segundos = Math.floor((diff/1000) % 60);
 
-document.getElementById("tiempo").innerHTML =
-años + " años, " +
-meses + " meses, " +
-dias + " días, " +
-horas + " horas, " +
-minutos + " minutos y " +
-segundos + " segundos ❤️";
+actualizarFlip("años",años);
+actualizarFlip("meses",meses);
+actualizarFlip("dias",dias);
+actualizarFlip("horas",horas);
+actualizarFlip("minutos",minutos);
+actualizarFlip("segundos",segundos);
+
+}
+
+function actualizarFlip(id,valor){
+
+const el = document.getElementById(id);
+
+if(el.textContent != valor){
+
+el.classList.remove("flip-anim");
+void el.offsetWidth;
+el.classList.add("flip-anim");
+
+el.textContent = valor;
+
+}
 
 }
 
 setInterval(actualizarContador,1000);
 
+
+  
+function crearCorazon(){
+const corazon = document.createElement("div");
+corazon.classList.add("corazon");
+corazon.innerHTML="❤️";
+
+corazon.style.left = Math.random()*100 + "vw";
+corazon.style.animationDuration = (5 + Math.random()*5) + "s";
+
+document.body.appendChild(corazon);
+
+setTimeout(()=>{corazon.remove();},8000);
+}
+
+setInterval(crearCorazon,800);
+
+function abrirCarta(){
+const carta = document.getElementById("mensajeCarta");
+
+if(carta.style.display === "block"){
+carta.style.display="none";
+}else{
+carta.style.display="block";
+}
+}
+
+const secciones = document.querySelectorAll(".seccion");
+
+function mostrarSecciones(){
+
+secciones.forEach(sec=>{
+
+const posicion = sec.getBoundingClientRect().top;
+
+if(posicion < window.innerHeight - 100){
+sec.classList.add("visible");
+}
+
+});
+
+}
+
+window.addEventListener("scroll",mostrarSecciones);
+mostrarSecciones();
 </script>
 </body>
 </html>
