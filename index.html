@@ -27,6 +27,7 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 .numero{
 font-size:32px;
 font-weight:bold;
+color:#ff4d6d;
 transition:transform 0.4s;
 }
 
@@ -163,12 +164,14 @@ font-size:20px;
 margin-top:10px;
 }
 
-.contador{
+..contador{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
 margin-top:20px;
-font-size:22px;
-background:white;
-display:inline-block;
 padding:12px 20px;
+background:white;
 border-radius:20px;
 color:#444;
 }
@@ -245,32 +248,32 @@ color:#666;
 <div class="contador">
 
 <div class="flip">
-<span id="años">0</span>
+<span id="años" class="numero">0</span>
 <p>Años</p>
 </div>
   
 <div class="flip">
-<span id="meses">0</span>
+<span id="meses" class="numero">0</span>
 <p>Meses</p>
 </div>
 
 <div class="flip">
-<span id="dias">0</span>
+<span id="dias" class="numero">0</span>
 <p>Días</p>
 </div>
 
 <div class="flip">
-<span id="horas">0</span>
+<span id="horas" class="numero">0</span>
 <p>Horas</p>
 </div>
 
 <div class="flip">
-<span id="minutos">0</span>
+<span id="minutos" class="numero">0</span>
 <p>Min</p>
 </div>
 
 <div class="flip">
-<span id="segundos">0</span>
+<span id="segundos" class="numero">0</span>
 <p>Seg</p>
 </div>
 </div>
@@ -398,7 +401,7 @@ Eres alguien muy importante para mí y espero seguir escribiendo esta historia c
 
 <h2>Una carta para ti 💌</h2>
 
-<img src="sobre.png" class="sobre" onclick="abrirCarta()">
+<img src="sobre.jpg" class="sobre" onclick="abrirCarta()">
 
 <div id="mensajeCarta" class="mensaje">
 
