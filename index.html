@@ -22,15 +22,16 @@ padding:10px;
 text-align:center;
 width:80px;
 box-shadow:0 5px 15px rgba(0,0,0,0.2);
-perspective:400px;
+perspective:800px;
 }
 
 .numero{
 font-size:32px;
 font-weight:bold;
 color:#ff4d6d;
-transition:transform 0.4s;
 display:block;
+transform-style:preserve-3d;
+backface-visibility:hidden;
 }
 
 .flip-anim{
@@ -170,7 +171,7 @@ font-size:20px;
 margin-top:10px;
 }
 
-..contador{
+.contador{
 display:flex;
 justify-content:center;
 align-items:center;
