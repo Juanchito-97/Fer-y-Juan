@@ -709,7 +709,15 @@ actualizarFlip("nHoras",horas);
 actualizarFlip("nMinutos",minutos);
 actualizarFlip("nSegundos",segundos);
 }  
+
+function resetear(){
+localStorage.clear();
+location.reload();
+}
   
 </script>
+<button onclick="resetear()" style="position:fixed; bottom:10px; right:10px; opacity:0.2;">
+Reset
+</button>
 </body>
 </html>
