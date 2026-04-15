@@ -247,7 +247,8 @@ padding:30px;
 color:#666;
 
 }
-.pregunta-final{
+
+ .pregunta-final{
 text-align:center;
 margin:100px auto;
 }
@@ -271,7 +272,6 @@ font-size:18px;
 border:none;
 border-radius:25px;
 cursor:pointer;
-transition:0.3s;
 }
 
 .btn-si{
@@ -288,7 +288,8 @@ margin-top:20px;
 font-size:22px;
 color:#ff4d6d;
 font-weight:bold;
-}
+}   
+    
 </style>
 
 </head>
@@ -473,17 +474,17 @@ Gracias por llegar a mi vida, besito🦦.
 </div>
 
 </div>
-<footer>
+
 <div class="pregunta-final">
 
-<h2 id="tituloVacante" onclick="mostrarPregunta()" style="cursor:pointer;">
+<h2 onclick="mostrarPregunta()" style="cursor:pointer;">
 Hay una vacante especial... 💼❤️
 </h2>
 
 <div id="bloquePregunta" style="display:none;">
 
 <p class="pregunta-texto">
-¿Puedo ser tu novio? 🥺
+¿Puedo ser tu novio? 
 </p>
 
 <div class="botones">
@@ -493,15 +494,47 @@ Hay una vacante especial... 💼❤️
 
 </div>
 
+<!-- CONTADOR NUEVO -->
 <div id="contadorNovios" class="contador" style="display:none; margin-top:30px;">
-<!-- (deja tu contador igual, no lo cambies) -->
+
+<div class="flip">
+<span id="nAnios" class="numero">0</span>
+<p>Años</p>
+</div>
+
+<div class="flip">
+<span id="nMeses" class="numero">0</span>
+<p>Meses</p>
+</div>
+
+<div class="flip">
+<span id="nDias" class="numero">0</span>
+<p>Días</p>
+</div>
+
+<div class="flip">
+<span id="nHoras" class="numero">0</span>
+<p>Horas</p>
+</div>
+
+<div class="flip">
+<span id="nMinutos" class="numero">0</span>
+<p>Min</p>
+</div>
+
+<div class="flip">
+<span id="nSegundos" class="numero">0</span>
+<p>Seg</p>
+</div>
+
 </div>
 
 <p id="mensajeFinal" class="mensaje-final"></p>
 
-
 </div>
   
+<footer>
+
 Hecho con amor por Juan ♥️
 
 </footer>
@@ -606,17 +639,20 @@ sec.classList.add("visible");
 
 }
 
+window.addEventListener("scroll",mostrarSecciones);
+mostrarSecciones();
+
 // MOSTRAR PREGUNTA
 function mostrarPregunta(){
 document.getElementById("bloquePregunta").style.display = "block";
 }
 
-// RESPUESTA NO (mensaje chistoso)
+// MENSAJE SI DICE NO
 function respuestaNo(){
-document.getElementById("mensajeFinal").textContent = "Ni modo, me tocó secuestrarte 😔";
+document.getElementById("mensajeFinal").textContent = "Ni modo, me tocó secuestrarte 😔🚐";
 }
 
-// GUARDAR FECHA EN LOCALSTORAGE
+// LOCAL STORAGE (guardar fecha)
 let inicioNovios = localStorage.getItem("inicioNovios");
 
 if(inicioNovios){
@@ -633,12 +669,47 @@ localStorage.setItem("inicioNovios", ahora);
 
 inicioNovios = ahora;
 
-document.getElementById("mensajeFinal").textContent = "Ahora si, oficialmente novios, te amo muy mucho💖";
+document.getElementById("mensajeFinal").textContent = "Ahora sí... oficialmente novios 💖🥹";
 
 document.getElementById("contadorNovios").style.display = "flex";
 
 setInterval(actualizarContadorNovios,1000);
 }
+
+// CONTADOR DE NOVIOS
+function actualizarContadorNovios(){
+
+const ahora = new Date();
+
+let años = ahora.getFullYear() - inicioNovios.getFullYear();
+let meses = ahora.getMonth() - inicioNovios.getMonth();
+let dias = ahora.getDate() - inicioNovios.getDate();
+
+if(dias < 0){
+meses--;
+const ultimoMes = new Date(ahora.getFullYear(), ahora.getMonth(), 0).getDate();
+dias += ultimoMes;
+}
+
+if(meses < 0){
+años--;
+meses += 12;
+}
+
+const diff = ahora - inicioNovios;
+
+const horas = Math.floor((diff/(1000*60*60)) % 24);
+const minutos = Math.floor((diff/(1000*60)) % 60);
+const segundos = Math.floor((diff/1000) % 60);
+
+actualizarFlip("nAnios",años);
+actualizarFlip("nMeses",meses);
+actualizarFlip("nDias",dias);
+actualizarFlip("nHoras",horas);
+actualizarFlip("nMinutos",minutos);
+actualizarFlip("nSegundos",segundos);
+}  
+  
 </script>
 </body>
 </html>
