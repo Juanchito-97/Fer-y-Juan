@@ -247,7 +247,48 @@ padding:30px;
 color:#666;
 
 }
+.pregunta-final{
+text-align:center;
+margin:100px auto;
+}
 
+.pregunta-texto{
+font-size:28px;
+margin:20px 0;
+font-weight:bold;
+}
+
+.botones{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:20px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn-si{
+background:#ff4d6d;
+color:white;
+}
+
+.btn-no{
+background:#ccc;
+}
+
+.mensaje-final{
+margin-top:20px;
+font-size:22px;
+color:#ff4d6d;
+font-weight:bold;
+}
 </style>
 
 </head>
@@ -433,7 +474,58 @@ Gracias por llegar a mi vida, besito🦦.
 
 </div>
 <footer>
+<div class="pregunta-final">
 
+<h2>Hay una vacante especial... </h2>
+
+<p class="pregunta-texto">
+¿Puedo ser tu novio? ♥️
+</p>
+
+<div class="botones">
+<button class="btn-si" onclick="aceptarNoviazgo()">Sí 💘</button>
+<button class="btn-no" id="btnNo">No 😢</button>
+</div>
+
+<!-- CONTADOR OCULTO -->
+<div id="contadorNovios" class="contador" style="display:none; margin-top:30px;">
+
+<div class="flip">
+<span id="nAnios" class="numero">0</span>
+<p>Años</p>
+</div>
+
+<div class="flip">
+<span id="nMeses" class="numero">0</span>
+<p>Meses</p>
+</div>
+
+<div class="flip">
+<span id="nDias" class="numero">0</span>
+<p>Días</p>
+</div>
+
+<div class="flip">
+<span id="nHoras" class="numero">0</span>
+<p>Horas</p>
+</div>
+
+<div class="flip">
+<span id="nMinutos" class="numero">0</span>
+<p>Min</p>
+</div>
+
+<div class="flip">
+<span id="nSegundos" class="numero">0</span>
+<p>Seg</p>
+</div>
+
+</div>
+
+<p id="mensajeFinal" class="mensaje-final"></p>
+
+</div>
+  
 Hecho con amor por Juan ♥️
 
 </footer>
@@ -540,6 +632,63 @@ sec.classList.add("visible");
 
 window.addEventListener("scroll",mostrarSecciones);
 mostrarSecciones();
+let inicioNovios = null;
+let intervaloNovios = null;
+
+function aceptarNoviazgo(){
+
+inicioNovios = new Date();
+
+document.getElementById("mensajeFinal").textContent = "Ahora sí... oficialmente eres el amor mío ♥️🥹";
+
+document.getElementById("contadorNovios").style.display = "flex";
+
+intervaloNovios = setInterval(actualizarContadorNovios,1000);
+}
+
+function actualizarContadorNovios(){
+
+const ahora = new Date();
+
+let años = ahora.getFullYear() - inicioNovios.getFullYear();
+let meses = ahora.getMonth() - inicioNovios.getMonth();
+let dias = ahora.getDate() - inicioNovios.getDate();
+
+if(dias < 0){
+meses--;
+const ultimoMes = new Date(ahora.getFullYear(), ahora.getMonth(), 0).getDate();
+dias += ultimoMes;
+}
+
+if(meses < 0){
+años--;
+meses += 12;
+}
+
+const diff = ahora - inicioNovios;
+
+const horas = Math.floor((diff/(1000*60*60)) % 24);
+const minutos = Math.floor((diff/(1000*60)) % 60);
+const segundos = Math.floor((diff/1000) % 60);
+
+actualizarFlip("nAnios",años);
+actualizarFlip("nMeses",meses);
+actualizarFlip("nDias",dias);
+actualizarFlip("nHoras",horas);
+actualizarFlip("nMinutos",minutos);
+actualizarFlip("nSegundos",segundos);
+}
+
+const btnNo = document.getElementById("btnNo");
+
+btnNo.addEventListener("mouseover", () => {
+const x = Math.random() * window.innerWidth - 100;
+const y = Math.random() * window.innerHeight - 50;
+
+btnNo.style.position = "absolute";
+btnNo.style.left = x + "px";
+btnNo.style.top = y + "px";
+});
 </script>
 </body>
 </html>
