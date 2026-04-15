@@ -657,6 +657,10 @@ let inicioNovios = localStorage.getItem("inicioNovios");
 
 if(inicioNovios){
 inicioNovios = new Date(inicioNovios);
+
+document.getElementById("contadorNovios").style.display = "flex";
+document.getElementById("bloquePregunta").style.display = "none";
+
 setInterval(actualizarContadorNovios,1000);
 }
 // CUANDO DICE QUE SÍ
@@ -667,11 +671,21 @@ localStorage.setItem("inicioNovios", ahora);
 
 inicioNovios = ahora;
 
-document.getElementById("mensajeFinal").textContent = "Ahora sí... oficialmente novios 💖🥹";
+document.getElementById("mensajeFinal").textContent = "Ahora sí, oficialmente novios 💖";
 
 document.getElementById("contadorNovios").style.display = "flex";
 
+// 🔥 OCULTA LA PREGUNTA (esto te faltaba)
+document.getElementById("bloquePregunta").style.display = "none";
+
 setInterval(actualizarContadorNovios,1000);
+
+// 🎉 CONFETI
+confetti({
+particleCount: 150,
+spread: 70,
+origin: { y: 0.6 }
+});
 }
 
 // CONTADOR DE NOVIOS
@@ -717,5 +731,6 @@ location.reload();
 <button onclick="resetear()" style="position:fixed; bottom:10px; right:10px; opacity:0.2;">
 Reset
 </button>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
