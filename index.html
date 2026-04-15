@@ -657,10 +657,8 @@ let inicioNovios = localStorage.getItem("inicioNovios");
 
 if(inicioNovios){
 inicioNovios = new Date(inicioNovios);
-document.getElementById("contadorNovios").style.display = "flex";
 setInterval(actualizarContadorNovios,1000);
 }
-
 // CUANDO DICE QUE SÍ
 function aceptarNoviazgo(){
 
